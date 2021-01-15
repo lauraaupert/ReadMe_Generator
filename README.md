@@ -1,1 +1,2 @@
-# README-Generator https://img.shields.io/github/license/lauraaupert/readme_generator
+# README-Generator 
+[![License: MIT]https://img.shields.io/github/license/lauraaupert/readme_generator
