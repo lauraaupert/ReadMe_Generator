@@ -1,1 +1,1 @@
-# README-Generator
+# README-Generator https://img.shields.io/github/license/lauraaupert/readme_generator
