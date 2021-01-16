@@ -95,6 +95,33 @@ ${response.description}
 
 
 
+
+//     if (response.installation) {
+// return `
+// Installation`
+// //     }
+//     const values = Object.values(response)
+// for (i = 2; i < 7; i++) {
+// const keys = Object.keys(response)
+
+// 
+// console.log(values)
+// console.log(keys)
+keys.forEach(table = () => {
+    return `
+\n${keys}\n
+    `
+})
+}
+
+
+
+
+
+
+
+
+
 const installation = () => {
     if (response.installation) {
         return `
@@ -229,7 +256,7 @@ limitations under the License.`
     }
 }
        
-      let total = badge + title + installation() + usage() + contributing() + testing() + questions() + license()
+      let total = badge + title + table() + installation() + usage() + contributing() + testing() + questions() + license()
 
         fs.writeFile('./assets/README.md', total, (e) => {
             e ? console.error(e) : console.log('success')
