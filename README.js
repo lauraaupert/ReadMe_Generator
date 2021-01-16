@@ -81,7 +81,7 @@ inquirer
         //missing if statement for if they want a license
         const badge = 
         response.license === "MIT" ? `![GitHub](https://img.shields.io/github/license/${response.github}/${response.repo})` : ``
-        || response.license === "Apache" ? `[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)]` : ``
+        || response.license === "Apache" ? `![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)` : ``
 
         //[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]
         //const badge = `![GitHub](https://img.shields.io/github/license/${response.github}/${response.repo})`
