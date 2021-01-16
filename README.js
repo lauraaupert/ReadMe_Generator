@@ -53,7 +53,11 @@ inquirer
             type: "checkbox",
             name: 'license',
             message: "Please choose a license.",
-            choices: ["MIT", "Apache license 2.0", "None"]
+            choices: [
+                 "MIT",
+                 "Apache",
+                 "None"
+            ]
         },
         {
             type: "input",
@@ -68,43 +72,157 @@ inquirer
 
     ])
         .then((response) => {
-        console.log(response)
-        const data = `
-        # ${response.title}
+        console.log(response.Choice)
+ 
+        const title = `
+# ${response.title}
 
-        ${response.description}
+${response.description}
 
-        ## TABLE OF CONTENTS
-
-        ## INSTALLATION
-
-        ${response.installation}
-
-        ## USAGE
-
-        ${response.usage}
-
-        ## CONTRIBUTING
-
-        ${response.contributing}
-        
-        ## TESTING
-
-        ${response.testing}
-
-        ## QUESTIONS
-            For additional questions, please get in touch:
-        https://github.com/${response.github}
-        ${response.email}
-
-        ## LICENSE
-        `
+## TABLE OF CONTENTS`
 
 
-        fs.writeFile('./assets/README.md', data, (e) => {
+
+const installation = () => {
+    if (response.installation) {
+        return `
+
+## INSTALLATION
+
+${response.installation}
+`
+            
+        } else if (!response.installation) {
+            return
+        }
+    }
+
+            const usage = () => {
+                if (response.usage) {
+
+                return ` 
+## USAGE
+
+${response.usage}
+`
+                } else if (!response.usage) {
+                    return
+                    
+            } 
+        }
+
+
+        const contributing = () => {
+            if (response.contributing) {
+
+                 return ` 
+## CONTRIBUTING
+
+${response.contributing}
+`
+            } else if (!response.contributing) {
+
+                return 
+                } 
+        }
+        const testing = () => {
+            if (response.testing) {
+
+                return          `
+## TESTING
+
+${response.testing}
+`
+        } 
+
+                 else if (!response.testing) {
+                     return
+
+            
+    }
+}
+
+        const questions = () => {
+            if (response.github && response.email) {
+                return `
+## QUESTIONS
+For additional questions, please get in touch:
+https://github.com/${response.github}
+${response.email}
+`
+            } else if (response.github) {
+                return ` 
+## QUESTIONS
+For additional questions, please get in touch:
+https://github.com/${response.github}
+`
+            } else if (response.email) {
+                return `
+## QUESTIONS
+For additional questions, please get in touch:
+${response.email}
+`
+            } else if (!response.github && !response.email) {
+                return
+            }
+        }
+
+console.log(response.license)
+        const license = () => {
+        if (response.license === 'MIT') {
+            return `
+
+## LICENSE
+MIT License
+
+Copyright (c) [year] [fullname]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.`
+    } else if (response.license === "Apache") {
+       return `
+## LICENSE
+Copyright [yyyy] [name of copyright owner]
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.`
+    } else if (response.license.None) {
+        return
+    }
+}
+      console.log(license())  
+       
+      let total = title + installation() + usage() + contributing() + testing() + questions() + license()
+
+        fs.writeFile('./assets/README.md', total, (e) => {
             e ? console.error(e) : console.log('success')
         })
   })  
+//        ## LICENSE
 
 
     /*badge html 
