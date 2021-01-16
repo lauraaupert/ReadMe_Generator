@@ -50,7 +50,7 @@ inquirer
             message: "Please provide testing instructions."
         },
         {
-            type: "checkbox",
+            type: "rawlist",
             name: 'license',
             message: "Please choose a license.",
             choices: [
@@ -68,11 +68,24 @@ inquirer
             type: "input",
             name: "email",
             message: "Please enter your email address."
+        },
+        {
+            type: "input",
+            name: "repo",
+            message: "Please enter the name of your repo."
         }
+
 
     ])
         .then((response) => {
-        console.log(response.Choice)
+        console.info(response.license)
+        //missing if statement for if they want a license
+        const badge = 
+        response.license === "MIT" ? `![GitHub](https://img.shields.io/github/license/${response.github}/${response.repo})` : ``
+        || response.license === "Apache" ? `[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)]` : ``
+
+        //[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]
+        //const badge = `![GitHub](https://img.shields.io/github/license/${response.github}/${response.repo})`
  
         const title = `
 # ${response.title}
@@ -92,8 +105,8 @@ const installation = () => {
 ${response.installation}
 `
             
-        } else if (!response.installation) {
-            return
+        } else if (response.installation === "") {
+            return ``
         }
     }
 
@@ -105,8 +118,8 @@ ${response.installation}
 
 ${response.usage}
 `
-                } else if (!response.usage) {
-                    return
+                } else if (response.usage === "") {
+                    return ``
                     
             } 
         }
@@ -122,7 +135,7 @@ ${response.contributing}
 `
             } else if (!response.contributing) {
 
-                return 
+                return ``
                 } 
         }
         const testing = () => {
@@ -135,8 +148,8 @@ ${response.testing}
 `
         } 
 
-                 else if (!response.testing) {
-                     return
+                 else if (response.testing === '') {
+                     return ``
 
             
     }
@@ -145,6 +158,7 @@ ${response.testing}
         const questions = () => {
             if (response.github && response.email) {
                 return `
+
 ## QUESTIONS
 For additional questions, please get in touch:
 https://github.com/${response.github}
@@ -152,12 +166,14 @@ ${response.email}
 `
             } else if (response.github) {
                 return ` 
+
 ## QUESTIONS
 For additional questions, please get in touch:
 https://github.com/${response.github}
 `
             } else if (response.email) {
                 return `
+                
 ## QUESTIONS
 For additional questions, please get in touch:
 ${response.email}
@@ -175,7 +191,7 @@ console.log(response.license)
 ## LICENSE
 MIT License
 
-Copyright (c) [year] [fullname]
+Copyright (c) 2021 ${response.github}
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -197,7 +213,7 @@ SOFTWARE.`
     } else if (response.license === "Apache") {
        return `
 ## LICENSE
-Copyright [yyyy] [name of copyright owner]
+Copyright 2021 ${response.github}
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -210,13 +226,13 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.`
-    } else if (response.license.None) {
-        return
+    } else if (response.license === "None") {
+        return ``
     }
 }
       console.log(license())  
        
-      let total = title + installation() + usage() + contributing() + testing() + questions() + license()
+      let total = badge + title + installation() + usage() + contributing() + testing() + questions() + license()
 
         fs.writeFile('./assets/README.md', total, (e) => {
             e ? console.error(e) : console.log('success')
