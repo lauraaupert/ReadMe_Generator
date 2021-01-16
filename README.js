@@ -78,7 +78,6 @@ inquirer
 
     ])
         .then((response) => {
-        console.info(response.license)
         //missing if statement for if they want a license
         const badge = 
         response.license === "MIT" ? `![GitHub](https://img.shields.io/github/license/${response.github}/${response.repo})` : ``
@@ -179,11 +178,10 @@ For additional questions, please get in touch:
 ${response.email}
 `
             } else if (!response.github && !response.email) {
-                return
+                return ``
             }
         }
 
-console.log(response.license)
         const license = () => {
         if (response.license === 'MIT') {
             return `
@@ -230,7 +228,6 @@ limitations under the License.`
         return ``
     }
 }
-      console.log(license())  
        
       let total = badge + title + installation() + usage() + contributing() + testing() + questions() + license()
 
