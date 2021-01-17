@@ -67,6 +67,9 @@ inquirer
         const badge = 
             response.license === "MIT" ? `![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)` : ``
             || response.license === "Apache" ? `![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)` : ``
+            || response.license === "ISC" ? `![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)` : ``
+
+            
  
         const title = `
 # ${response.title}\t${badge}
