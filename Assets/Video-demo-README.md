@@ -1,5 +1,5 @@
 
-# I'm extra fluffy	
+# I'm extra fluffy	![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)
 
 ## DESCRIPTION
 
