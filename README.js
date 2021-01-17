@@ -90,7 +90,7 @@ inquirer
         //const badge = `![GitHub](https://img.shields.io/github/license/${response.github}/${response.repo})`
  
         const title = `
-# ${response.title}
+# ${response.title} ${badge}
 
 ${response.description}
 
@@ -296,7 +296,7 @@ limitations under the License.`
     }
 }
        
-      let total = badge + title + table() + installation() + usage() + contributing() + testing() + questions() + license()
+      let total = title + table() + installation() + usage() + contributing() + testing() + questions() + license()
 
         fs.writeFile('./assets/README.md', total, (e) => {
             e ? console.error(e) : console.log('success')
