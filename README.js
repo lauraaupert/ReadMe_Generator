@@ -16,6 +16,7 @@ email address in questions
 const fs = require('fs')
 const inquirer = require('inquirer')
 const Choice = require('inquirer/lib/objects/choice')
+const list = require('markdown-list');
 
 inquirer
     .prompt([
@@ -93,30 +94,66 @@ ${response.description}
 
 ## TABLE OF CONTENTS`
 
+const table = () => {
+    var render = ""
+    for (i = 2; i < 7; i++) {
+        if (Object.values(response)[i] !== "" && Object.values(response)[i] !== "None") {
+            const key = "*" + Object.keys(response)[i].charAt(0).toUpperCase() + Object.keys(response)[i].slice(1)
+            render += key + "\n"
+       }
+    }
+    // city.charAt(0).toUpperCase() + city.slice(1)
+    // .split(' ')
+   
 
-
-
-//     if (response.installation) {
-// return `
-// Installation`
-// //     }
-//     const values = Object.values(response)
-// for (i = 2; i < 7; i++) {
-// const keys = Object.keys(response)
-
-// 
-// console.log(values)
-// console.log(keys)
-keys.forEach(table = () => {
+    // if (Object.values(response)[2] !== "") {
+    //      render += Object.keys(response)[2] + " "
+    // }
+    // if (Object.values(response)[3] !== "") {
+    //     render += Object.keys(response)[3]+ " "
+        
+    // }
+    // if (Object.values(response)[4] !== "") {
+    //     render += Object.keys(response)[4]+ " "
+        
+    // }
+    // if (Object.values(response)[5] !== "") {
+    //     render +=  Object.keys(response)[5]+ " "
+    // }
+    // if (Object.values(response)[6] !== "") {
+    //     render += Object.keys(response)[6]+ " "
+    // }
     return `
-\n${keys}\n
-    `
-})
+${render}`
+// ${one}
+// ${two}
+// ${three}
+// ${four}
+// ${five}
+
+    
 }
 
 
 
 
+//WHY DOESNT THIS WORK? IT SHOULD ITERATE THROUGH THE OBJECT.KEYS AND RUN THE PRINT FUNCTION FOR EACH VALUE OF I
+//  const table = () => {
+//     for (i = 2; i < 7; i++) {
+//       const print = () => {         
+// const keys = Object.keys(response)[i]
+// console.log(keys)
+//     return `
+// ${keys}
+// `
+//       }
+
+// print()
+// }
+
+//         }
+    
+    
 
 
 
@@ -292,4 +329,68 @@ limitations under the License.`
 
  
 //       })
+
+
+
+
+//ATTEMPTS AT MAKING A LOOP TO DYNAMICALLY generate THE TABLE OF CONTENT. I GIVE UP.
+//     if (response.installation) {
+// return `
+// Installation`
+// //     }
+
+// const values = Object.values(response)
+// // for (i = 2; i < 7; i++) {
+
+// const table = () => {
+// var array = []
+// for (i = 2; i < 7; i++) {
+//     const keys = `${(Object.keys(response)[i])}`
+    
+//     array.push(keys)
+//     console.log(keys)
+// }
+// //array.values().classList.add()
+// // console.log(array)
+
+// // for (const value of array) {
+// //           console.log(`${value}`)
+// // }
+// const print = `${array.values()}`
+// return `${print}`
+// }
+// return
+// `
+// \n 
+// *${array} \n-
+// `
+
+
+
+// for (const value of keys) {
+//     console.log(value)
+
+//}
+
+// 
+// console.log(values)
+// console.log(keys)
+// values.forEach(table = () => {
+//     if (values) {
+//         //function ListContent(ListItems)
+//         //ListContent(${keys})
+
+          
+    
+//})
+
+
+
+
+
+
+
+
+
+
     
