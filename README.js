@@ -26,7 +26,7 @@ inquirer
         },
         {
             type: "input",
-            name: 'contributing',
+            name: 'contributions',
             message: "Please provide contribution guidelines."
         },
         {
@@ -118,11 +118,11 @@ ${response.usage}
     const contributing = () => {
         if (response.contributing) {
             return ` 
-## CONTRIBUTIONS <a name="CONSTRIBUTIONS"></a>
+## CONTRIBUTIONS <a name="CONTRIBUTIONS"></a>
 
-${response.contributing}
+${response.contributions}
 `
-        } else if (!response.contributing) {
+        } else if (!response.contributions) {
 
             return ``
         } 
