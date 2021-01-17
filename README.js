@@ -102,7 +102,7 @@ const table = () => {
         if (Object.values(response)[i] !== "" && Object.values(response)[i] !== "None") {
             const key = "[" + Object.keys(response)[i].charAt(0).toUpperCase() + Object.keys(response)[i].slice(1) + "]"
                 + "(#" + Object.keys(response)[i].toUpperCase() + ")"
-            render += key + "\n"
+            render += key + "  "
        }
     }
     // city.charAt(0).toUpperCase() + city.slice(1)
@@ -226,22 +226,22 @@ ${response.testing}
                 return `
 
 ## QUESTIONS <a name="QUESTIONS"></a>
-For additional questions, please get in touch:
-https://github.com/${response.github}
+For additional questions, please get in touch:  
+https://github.com/${response.github}  
 ${response.email}
 `
             } else if (response.github) {
                 return ` 
 
 ## QUESTIONS <a name="QUESTIONS"></a>
-For additional questions, please get in touch:
-https://github.com/${response.github}
+For additional questions, please get in touch:  
+https://github.com/${response.github}  
 `
             } else if (response.email) {
                 return `
                 
 ## QUESTIONS <a name="QUESTIONS"></a>
-For additional questions, please get in touch:
+For additional questions, please get in touch:\
 ${response.email}
 `
             } else if (!response.github && !response.email) {
