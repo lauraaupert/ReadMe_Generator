@@ -235,7 +235,7 @@ CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.`
       
     let total = title + table() + installation() + usage() + contributing() + testing() + questions() + license()
 
-    fs.writeFile('./assets/README.md', total, (e) => {
+    fs.writeFile('./Output/README.md', total, (e) => {
         e ? console.error(e) : console.log('success')
     })
   })  
