@@ -102,7 +102,7 @@ const table = () => {
         if (Object.values(response)[i] !== "" && Object.values(response)[i] !== "None") {
             const key = "[" + Object.keys(response)[i].charAt(0).toUpperCase() + Object.keys(response)[i].slice(1) + "]"
                 + "(#" + Object.keys(response)[i].toUpperCase() + ")"
-            render += key + "  "
+            render += "\n" + key + "  "
        }
     }
     // city.charAt(0).toUpperCase() + city.slice(1)
