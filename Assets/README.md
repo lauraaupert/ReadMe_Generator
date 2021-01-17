@@ -1,38 +1,43 @@
-![GitHub](https://img.shields.io/github/license//)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 # fda
 
 fda
 
 ## TABLE OF CONTENTS
-[Installation](#installation)
-*Installation
-*Usage
-*Contributing
-*Testing
-*License
+[Installation](#INSTALLATION)
+[Usage](#USAGE)
+[Contributing](#CONTRIBUTING)
+[Testing](#TESTING)
+[License](#LICENSE)
 
 
-## INSTALLATION <a name="installation"></a>
+## INSTALLATION <a name="INSTALLATION"></a>
 
 fda
  
-## USAGE
+## USAGE <a name="USAGE"></a>
 
-fdsa
+fda
  
-## CONTRIBUTING
+## CONTRIBUTIONS <a name="CONSTRIBUTIONS"></a>
 
-fdsa
+fda
 
-## TESTING
+## TESTING <a name="TESTING"></a>
 
+fda
+
+
+## QUESTIONS <a name="QUESTIONS"></a>
+For additional questions, please get in touch:
+https://github.com/fda
 fda
 
 
 ## LICENSE
 MIT License
 
-Copyright (c) 2021 
+Copyright (c) 2021 fda
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

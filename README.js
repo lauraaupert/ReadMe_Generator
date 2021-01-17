@@ -81,7 +81,9 @@ inquirer
         .then((response) => {
         //missing if statement for if they want a license
         const badge = 
-        response.license === "MIT" ? `![GitHub](https://img.shields.io/github/license/${response.github}/${response.repo})` : ``
+        //response.license === "MIT" ? `![GitHub](https://img.shields.io/github/license/${response.github}/${response.repo})` : ``
+
+        response.license === "MIT" ? `![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)` : ``
         || response.license === "Apache" ? `![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)` : ``
 
         //[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]
@@ -98,7 +100,8 @@ const table = () => {
     var render = ""
     for (i = 2; i < 7; i++) {
         if (Object.values(response)[i] !== "" && Object.values(response)[i] !== "None") {
-            const key = "*" + Object.keys(response)[i].charAt(0).toUpperCase() + Object.keys(response)[i].slice(1)
+            const key = "[" + Object.keys(response)[i].charAt(0).toUpperCase() + Object.keys(response)[i].slice(1) + "]"
+                + "(#" + Object.keys(response)[i].toUpperCase() + ")"
             render += key + "\n"
        }
     }
@@ -163,7 +166,7 @@ const installation = () => {
     if (response.installation) {
         return `
 
-## INSTALLATION
+## INSTALLATION <a name="INSTALLATION"></a>
 
 ${response.installation}
 `
@@ -177,7 +180,7 @@ ${response.installation}
                 if (response.usage) {
 
                 return ` 
-## USAGE
+## USAGE <a name="USAGE"></a>
 
 ${response.usage}
 `
@@ -192,7 +195,7 @@ ${response.usage}
             if (response.contributing) {
 
                  return ` 
-## CONTRIBUTING
+## CONTRIBUTIONS <a name="CONSTRIBUTIONS"></a>
 
 ${response.contributing}
 `
@@ -205,7 +208,7 @@ ${response.contributing}
             if (response.testing) {
 
                 return          `
-## TESTING
+## TESTING <a name="TESTING"></a>
 
 ${response.testing}
 `
@@ -222,7 +225,7 @@ ${response.testing}
             if (response.github && response.email) {
                 return `
 
-## QUESTIONS
+## QUESTIONS <a name="QUESTIONS"></a>
 For additional questions, please get in touch:
 https://github.com/${response.github}
 ${response.email}
@@ -230,14 +233,14 @@ ${response.email}
             } else if (response.github) {
                 return ` 
 
-## QUESTIONS
+## QUESTIONS <a name="QUESTIONS"></a>
 For additional questions, please get in touch:
 https://github.com/${response.github}
 `
             } else if (response.email) {
                 return `
                 
-## QUESTIONS
+## QUESTIONS <a name="QUESTIONS"></a>
 For additional questions, please get in touch:
 ${response.email}
 `
