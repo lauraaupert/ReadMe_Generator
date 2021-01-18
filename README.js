@@ -2,75 +2,72 @@ const fs = require('fs')
 const inquirer = require('inquirer')
 const Choice = require('inquirer/lib/objects/choice')
 
+var questions = [
+    {
+        type: "input",
+        name: 'title',
+        message: "What is the title of your project?"
+    },
+    {
+        type: "input",
+        name: 'description',
+        message: "Please briefly describe this project."
+    },
+    {
+        type: "input",
+        name: 'installation',
+        message: "Please share any instructions for installation."
+    },
+    {
+        type: "input",
+        name: 'usage',
+        message: "Provide usage information now."
+    },
+    {
+        type: "input",
+        name: 'contributions',
+        message: "Please provide contribution guidelines."
+    },
+    {
+        type: "input",
+        name: 'testing',
+        message: "Please provide testing instructions."
+    },
+    {
+        type: "rawlist",
+        name: 'license',
+        message: "Please choose a license.",
+        choices: [
+             "MIT",
+             "Apache",
+             "ISC",
+             "None"
+        ]
+    },
+    {
+        type: "input",
+        name: "github",
+        message: "Please enter your GitHub username."
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "Please enter your email address."
+    },
+    {
+        type: "input",
+        name: "repo",
+        message: "Please enter the name of your repo."
+    }
+]
 inquirer
-    .prompt([
-        {
-            type: "input",
-            name: 'title',
-            message: "What is the title of your project?"
-        },
-        {
-            type: "input",
-            name: 'description',
-            message: "Please briefly describe this project."
-        },
-        {
-            type: "input",
-            name: 'installation',
-            message: "Please share any instructions for installation."
-        },
-        {
-            type: "input",
-            name: 'usage',
-            message: "Provide usage information now."
-        },
-        {
-            type: "input",
-            name: 'contributions',
-            message: "Please provide contribution guidelines."
-        },
-        {
-            type: "input",
-            name: 'testing',
-            message: "Please provide testing instructions."
-        },
-        {
-            type: "rawlist",
-            name: 'license',
-            message: "Please choose a license.",
-            choices: [
-                 "MIT",
-                 "Apache",
-                 "ISC",
-                 "None"
-            ]
-        },
-        {
-            type: "input",
-            name: "github",
-            message: "Please enter your GitHub username."
-        },
-        {
-            type: "input",
-            name: "email",
-            message: "Please enter your email address."
-        },
-        {
-            type: "input",
-            name: "repo",
-            message: "Please enter the name of your repo."
-        }
-
-
-    ])
+    .prompt(questions)
         .then((response) => {
         const badge = 
             response.license === "MIT" ? `![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)` : ``
             || response.license === "Apache" ? `![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)` : ``
             || response.license === "ISC" ? `![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)` : ``
 
-            
- 
         const title = `
 # ${response.title}\t${badge}
 
